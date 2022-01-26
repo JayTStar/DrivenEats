@@ -62,6 +62,9 @@ main{
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+.options::-webkit-scrollbar {
+    display: none;
+  }
 .box{
     width: 172px;
     height: 216px;
