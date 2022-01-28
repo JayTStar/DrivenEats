@@ -145,11 +145,11 @@ function finish(){
     console.log(dessertName.innerText);
     console.log(dessertPrice.innerText);
 
-    let message = ("Olá, gostaria de fazer o pedido:"
-    "- Prato: " + dishName.innerText
-    "- Bebida: " + drinkName.innerText
-    "- Sobremesa: " + dessertName.innerText
-    "Total: " + total)
+    // let message = ("Olá, gostaria de fazer o pedido:"
+    // "- Prato: " + dishName.innerText
+    // "- Bebida: " + drinkName.innerText
+    // "- Sobremesa: " + dessertName.innerText
+    // "Total: " + total)
 
-    console.log(encodeURIComponent(message));
+    // console.log(encodeURIComponent(message));
 }
