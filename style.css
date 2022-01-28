@@ -36,7 +36,7 @@ main{
     padding-top: 100px;
     padding-bottom:108px;
     padding-left: 19px;
-    background-color: #E5E5E5;
+    background-color: #E5E5E5; 
 }
 /* Seleções do combo */
 .selection{
@@ -64,7 +64,7 @@ main{
 }
 .options::-webkit-scrollbar {
     display: none;
-  }
+}
 .box{
     width: 172px;
     height: 216px;
@@ -79,7 +79,6 @@ main{
     margin-top: 17px;
     padding: 0 14px;
 }
-
 .box img{
     max-width: 144px;
     max-height: 87px;
@@ -121,6 +120,11 @@ main{
     line-height: 19px;
     margin-top: 5px;
 }
+
+.selected{
+    border: 5px solid #32B72F;
+}
+
 /* Footer Style */
 footer{
     width: 100%;
@@ -136,7 +140,6 @@ footer{
 footer button{
     width: 90%;
     height: 61px;
-    background-color: #CBCBCB;
     color: #FFFFFF;
     border-radius: 50px;
     font-family: Roboto;
@@ -144,4 +147,16 @@ footer button{
     line-height: 23px;
     text-align: center;
     letter-spacing: 0.018em;
+}
+
+#notReady{
+    background-color: #CBCBCB;
+}
+
+#ready{
+    background-color: #32B72F;
+}
+
+.hidden{
+    display: none;
 }
