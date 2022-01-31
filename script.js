@@ -1,10 +1,14 @@
+let total;
+let phoneNumber = 5521982532159;
 
 // ---- Seleção dos pratos----
 const itensDishes = document.querySelectorAll("#dishes .box");
 const cardapioDishes = Array.prototype.slice.call(itensDishes);
 let tamanhoDishes = cardapioDishes.length;
 let dishSelected;
-let dishStatus; 
+let dishStatus = 0; 
+let dishName;
+let dishPrice;
 
 function dishCheck(){
     for(i= 0; i<(tamanhoDishes); i++){
@@ -28,24 +32,28 @@ cardapioDishes.forEach(function(pegaElementoAtual){
        
        if(dishCheck() == true){
            cardapioDishes[dishSelected].classList.remove("selected");
+           cardapioDishes[dishSelected].querySelector("ion-icon").classList.toggle("hidden");
            this.classList.toggle("selected");
+           this.querySelector("ion-icon").classList.toggle("hidden");
        }
        if(dishCheck() == false){
            this.classList.toggle("selected");
+           this.querySelector("ion-icon").classList.toggle("hidden");
            dishStatus = 1;
        }
-       console.log(dishCheck());
-       console.log(dishStatus);
+
        changeButton();
    });
 });
 
 // ---- Seleção dos Drinks ----
-const itensDrinks = document.querySelectorAll("#drinks .box");
-const cardapioDrinks = Array.prototype.slice.call(itensDrinks);
-let tamanhoDrinks = cardapioDrinks.length;
 let drinkSelected;
 let drinkStatus = 0;
+const itensDrinks = document.querySelectorAll("#drinks .box");
+const cardapioDrinks = Array.prototype.slice.call(itensDrinks);
+let drinkName ;
+let drinkPrice ;
+let tamanhoDrinks = cardapioDrinks.length;
 
 function drinkCheck(){
     for(i=0; i<(tamanhoDrinks); i++){
@@ -56,7 +64,6 @@ function drinkCheck(){
             return(true);
         }
         if(testeDrink == false && i == (tamanhoDrinks - 1)){
-            console.log(i);
             drinkStatus = 0;
             return(false);
         }
@@ -68,24 +75,28 @@ cardapioDrinks.forEach(function(pegaElementoAtual){
        drinkCheck();
        if(drinkCheck() == true){
            cardapioDrinks[drinkSelected].classList.remove("selected");
+           cardapioDrinks[drinkSelected].querySelector("ion-icon").classList.toggle("hidden");
            this.classList.toggle("selected");
+           this.querySelector("ion-icon").classList.toggle("hidden");
        }
        if(drinkCheck() == false){
            this.classList.toggle("selected");
+           this.querySelector("ion-icon").classList.toggle("hidden");
            drinkStatus = 1;
        }
-       console.log(drinkCheck());
-       console.log(drinkStatus);
+       
        changeButton();
    });
 });
 
 // ---- Seleção das Desserts ----
-const itensDesserts = document.querySelectorAll("#desserts .box");
-const cardapioDesserts = Array.prototype.slice.call(itensDesserts);
-let tamanhoDesserts = cardapioDesserts.length;
 let dessertSelected;
 let dessertStatus = 0;
+const itensDesserts = document.querySelectorAll("#desserts .box");
+const cardapioDesserts = Array.prototype.slice.call(itensDesserts);
+let dessertName ;
+let dessertPrice ;
+let tamanhoDesserts = cardapioDesserts.length;
 
 function dessertCheck(){
     for(i=0; i<(tamanhoDesserts); i++){
@@ -106,14 +117,16 @@ cardapioDesserts.forEach(function(pegaElementoAtual){
        dessertCheck();
        if(dessertCheck() == true){
            cardapioDesserts[dessertSelected].classList.remove("selected");
+           cardapioDesserts[dessertSelected].querySelector("ion-icon").classList.toggle("hidden");
            this.classList.toggle("selected");
+           this.querySelector("ion-icon").classList.toggle("hidden");
        }
        if(dessertCheck() == false){
            this.classList.toggle("selected");
+           this.querySelector("ion-icon").classList.toggle("hidden");
            dessertStatus = 1;
        }
-       console.log(dessertCheck());
-       console.log(dessertStatus);
+
        changeButton();
    });
 });
@@ -129,27 +142,62 @@ function changeButton(){
     }
 }
 
-function finish(){
-    let dishName = cardapioDishes[dishSelected].querySelector("#name");
-    let dishPrice = cardapioDishes[dishSelected].querySelector("#price");
-    let drinkName = cardapioDrinks[drinkSelected].querySelector("#name");
-    let drinkPrice = cardapioDrinks[drinkSelected].querySelector("#price");
-    let dessertName = cardapioDesserts[dessertSelected].querySelector("#name");
-    let dessertPrice = cardapioDesserts[dessertSelected].querySelector("#price");
-    let total = 
+function confirmation(){
+    dishCheck();
+    drinkCheck();
+    dessertCheck();
 
-    console.log(dishName.innerText);
-    console.log(dishPrice.innerText);
-    console.log(drinkName.innerText);
-    console.log(drinkPrice.innerText);
-    console.log(dessertName.innerText);
-    console.log(dessertPrice.innerText);
+    const confirmationScreen = document.querySelector("#confirmationScreen");
+    confirmationScreen.classList.remove("hidden");
 
-    // let message = ("Olá, gostaria de fazer o pedido:"
-    // "- Prato: " + dishName.innerText
-    // "- Bebida: " + drinkName.innerText
-    // "- Sobremesa: " + dessertName.innerText
-    // "Total: " + total)
+    dishName = cardapioDishes[dishSelected].querySelector("#name").innerText;
+    dishPrice = cardapioDishes[dishSelected].querySelector("#price").innerText;
+    console.log(dishName + dishPrice);
+    document.querySelector("#order #dishName").innerHTML = dishName;
+    document.querySelector("#order #dishPrice").innerHTML = dishPrice;
 
-    // console.log(encodeURIComponent(message));
+    drinkName = cardapioDrinks[drinkSelected].querySelector("#name").innerText;
+    drinkPrice = cardapioDrinks[drinkSelected].querySelector("#price").innerText;
+    console.log(drinkName + drinkPrice);
+    document.querySelector("#order #drinkName").innerHTML = drinkName;
+    document.querySelector("#order #drinkPrice").innerHTML = drinkPrice;
+
+    dessertName = cardapioDesserts[dessertSelected].querySelector("#name").innerText;
+    dessertPrice = cardapioDesserts[dessertSelected].querySelector("#price").innerText;
+    console.log(dessertName + dessertPrice);
+    document.querySelector("#order #dessertName").innerHTML = dessertName;
+    document.querySelector("#order #dessertPrice").innerHTML = dessertPrice;
+
+    const dishPriceFloat = parseFloat(dishPrice.replace("," , "."));
+    const drinkPriceFloat = parseFloat(drinkPrice.replace("," , "."));
+    const dessertPriceFloat = parseFloat(dessertPrice.replace("," , "."));
+
+    const totalFloat = (dishPriceFloat + drinkPriceFloat + dessertPriceFloat).toFixed(2);
+    total = totalFloat.toString();
+    total = total.replace("." , ",");
+    console.log(total);
+    document.querySelector("#order #totalPrice").innerHTML = "R$ " + total;
+}
+
+function cancel(){
+    const confirmationScreen = document.querySelector("#confirmationScreen");
+    confirmationScreen.classList.add("hidden");
+}
+
+function finishOrder(){
+    const clientName = prompt("Qual o seu nome ?");
+    const clientAdress = prompt("Insira seu endereço completo:");
+
+    const message = `Olá, gostaria de fazer o pedido:
+    - Prato: ${dishName}
+    - Bebida: ${drinkName}
+    - Sobremesa: ${dessertName}
+    Total: R$ ${total}
+    Para ser entregue à ${clientName} em ${clientAdress}`
+
+    const codedMessage = encodeURIComponent(message);
+
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${codedMessage}`
+
+    window.open(whatsappLink, '_blank').focus();
 }
