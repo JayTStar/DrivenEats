@@ -189,6 +189,7 @@ ion-icon{
     line-height: 26px;
     text-align: center;
     letter-spacing: 0.018em;
+    cursor: pointer;
 }
 
 #order .font400{
@@ -238,6 +239,7 @@ footer button{
     line-height: 23px;
     text-align: center;
     letter-spacing: 0.018em;
+    cursor: pointer;
 }
 
 #notReady{
